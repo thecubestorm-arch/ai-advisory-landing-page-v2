@@ -1,5 +1,6 @@
+import { jsPDF } from 'jspdf';
 import { QuizData } from './Quiz';
-import { Calendar, Lightbulb, Target, Zap, AlertTriangle, CheckCircle2, Mail, Phone } from 'lucide-react';
+import { Calendar, Lightbulb, Target, Zap, AlertTriangle, CheckCircle2, Mail, Phone, Download } from 'lucide-react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 interface Props {
@@ -45,7 +46,7 @@ export default function Step4Dashboard({ data }: Props) {
 
   const getInsights = () => {
     const insights = [];
-    
+
     if (data.bp3 === 'Nein') {
       insights.push({ icon: <AlertTriangle className="text-alpine-gold" />, title: "Schatten-IT Risiko", text: "Ohne klare Richtlinien nutzen Mitarbeiter AI auf eigene Faust. Erstelle zeitnah eine AI-Policy, um Datenlecks zu vermeiden." });
     } else {
@@ -73,6 +74,141 @@ export default function Step4Dashboard({ data }: Props) {
 
   const insights = getInsights();
 
+  // Text-only insights for PDF (no JSX icons)
+  const insightTexts = insights.map(({ title, text }) => ({ title, text }));
+
+  const downloadReport = () => {
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const gold = [200, 169, 110] as [number, number, number];
+    const dark = [26, 23, 20] as [number, number, number];
+    const grey = [120, 113, 108] as [number, number, number];
+    const pageW = 210;
+    const margin = 20;
+    let y = 0;
+
+    // Header bar
+    doc.setFillColor(...gold);
+    doc.rect(0, 0, pageW, 18, 'F');
+    doc.setFontSize(11);
+    doc.setTextColor(26, 23, 20);
+    doc.setFont('helvetica', 'bold');
+    doc.text('RAIKU', margin, 12);
+    doc.setFont('helvetica', 'normal');
+    doc.text('AI-Readiness Report', pageW / 2, 12, { align: 'center' });
+    doc.text(new Date().toLocaleDateString('de-CH'), pageW - margin, 12, { align: 'right' });
+
+    y = 36;
+
+    // Title
+    doc.setFontSize(26);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...dark);
+    doc.text('Dein AI-Readiness Report', margin, y);
+    y += 10;
+
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...grey);
+    doc.text(`Erstellt für: ${data.name}  |  ${data.email}`, margin, y);
+    y += 16;
+
+    // Divider
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(0.5);
+    doc.line(margin, y, pageW - margin, y);
+    y += 12;
+
+    // Score section
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...dark);
+    doc.text('Scores', margin, y);
+    y += 10;
+
+    const scores = [
+      { label: 'Gesamt-Score', value: totalScore },
+      { label: 'Strategie', value: strategyScore },
+      { label: 'Ausführung', value: executionScore },
+      { label: 'Kultur', value: cultureScore },
+    ];
+
+    scores.forEach(({ label, value }) => {
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...grey);
+      doc.text(label, margin, y);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...gold);
+      doc.text(`${value} / 100`, margin + 60, y);
+      // Bar background
+      doc.setFillColor(230, 225, 215);
+      doc.roundedRect(margin + 90, y - 5, 80, 6, 2, 2, 'F');
+      // Bar fill
+      doc.setFillColor(...gold);
+      doc.roundedRect(margin + 90, y - 5, (value / 100) * 80, 6, 2, 2, 'F');
+      y += 12;
+    });
+
+    y += 6;
+    doc.setDrawColor(230, 225, 215);
+    doc.line(margin, y, pageW - margin, y);
+    y += 12;
+
+    // Insights
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...dark);
+    doc.text('Deine 3 Kern-Insights', margin, y);
+    y += 10;
+
+    insightTexts.forEach(({ title, text }) => {
+      doc.setFillColor(...gold);
+      doc.circle(margin + 1.5, y - 2, 1.5, 'F');
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...dark);
+      doc.text(title, margin + 6, y);
+      y += 6;
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...grey);
+      const lines = doc.splitTextToSize(text, pageW - margin * 2 - 6);
+      doc.text(lines, margin + 6, y);
+      y += lines.length * 6 + 6;
+    });
+
+    y += 2;
+    doc.setDrawColor(230, 225, 215);
+    doc.line(margin, y, pageW - margin, y);
+    y += 12;
+
+    // Footer CTA
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...dark);
+    doc.text('Ihr nächster Schritt', margin, y);
+    y += 8;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.setTextColor(...grey);
+    const ctaText = `Buchen Sie jetzt Ihr kostenloses Erstgespräch und erfahren Sie, wie wir Ihr Ziel "${data.s2 === 'Sonstiges' ? data.s2_other : data.s2}" gemeinsam erreichen.`;
+    const ctaLines = doc.splitTextToSize(ctaText, pageW - margin * 2);
+    doc.text(ctaLines, margin, y);
+    y += ctaLines.length * 6 + 8;
+
+    doc.setTextColor(...gold);
+    doc.text('hello@raiku.com  |  +41 79 123 45 67  |  www.raiku.com', margin, y);
+
+    // Bottom bar
+    doc.setFillColor(...dark);
+    doc.rect(0, 287, pageW, 10, 'F');
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...gold);
+    doc.text('© RAIKU – AI Advisory', pageW / 2, 293, { align: 'center' });
+
+    doc.save(`RAIKU_AI-Readiness-Report_${data.name.replace(/\s+/g, '_')}.pdf`);
+  };
+
   return (
     <div className="animate-in fade-in zoom-in-95 duration-700 max-w-6xl mx-auto text-leder-schwarz">
       {/* Big Reveal */}
@@ -94,7 +230,7 @@ export default function Step4Dashboard({ data }: Props) {
             Dein Unternehmen befindet sich im {totalScore > 70 ? 'oberen' : totalScore > 40 ? 'mittleren' : 'unteren'} Drittel der AI-Readiness.
           </p>
         </div>
-        
+
         <div className="bg-white border border-leder-schwarz/5 shadow-sm rounded-3xl p-8 flex flex-col justify-center items-center h-[400px]">
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
@@ -121,6 +257,20 @@ export default function Step4Dashboard({ data }: Props) {
         ))}
       </div>
 
+      {/* Email Confirmation & Download */}
+      <div className="text-center mb-16">
+        <p className="text-leder-schwarz/70 text-lg mb-6">
+          Der Report wurde soeben per E-Mail zugestellt. Falls Sie ihn trotzdem downloaden möchten:
+        </p>
+        <button
+          onClick={downloadReport}
+          className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-cremeweiss bg-leder-schwarz rounded-full hover:bg-leder-schwarz/80 transition-all hover:scale-105 shadow-lg"
+        >
+          <Download className="mr-2 w-5 h-5" />
+          Report herunterladen
+        </button>
+      </div>
+
       {/* Next Steps & CTA */}
       <div className="bg-leder-schwarz text-cremeweiss rounded-3xl p-8 md:p-16 text-center shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-alpine-gold" />
@@ -128,9 +278,9 @@ export default function Step4Dashboard({ data }: Props) {
         <p className="text-xl text-cremeweiss/70 mb-10 max-w-3xl mx-auto font-medium">
           Lassen Sie uns gemeinsam herausfinden, wie wir Ihr Ziel (<strong className="text-alpine-gold">{data.s2 === 'Sonstiges' ? data.s2_other : data.s2}</strong>) durch gezielte <strong className="text-alpine-gold">{data.s4 === 'Sonstiges' ? data.s4_other : data.s4}</strong> strategisch und effizient erreichen können.
         </p>
-        
+
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-          <a 
+          <a
             href="#"
             onClick={(e) => { e.preventDefault(); alert('Calendly öffnet sich'); }}
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-leder-schwarz bg-alpine-gold rounded-full hover:bg-alpine-gold/90 transition-all hover:scale-105 shadow-xl w-full sm:w-auto"
@@ -139,7 +289,7 @@ export default function Step4Dashboard({ data }: Props) {
             Kostenloses Erstgespräch buchen
           </a>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t border-cremeweiss/10 flex flex-col sm:flex-row justify-center items-center gap-8 text-cremeweiss/50 font-medium">
           <div className="flex items-center">
             <Mail className="w-5 h-5 mr-2" />
