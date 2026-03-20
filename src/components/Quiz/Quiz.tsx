@@ -111,7 +111,7 @@ export default function Quiz({ isOpen, onClose }: QuizProps) {
   if (!isOpen) return null;
 
   const updateData = (fields: Partial<QuizData>) => setData(prev => ({ ...prev, ...fields }));
-  const scrollToTop = () => scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToTop = () => scrollRef.current?.scrollTo({ top: 0, behavior: 'instant' });
   const nextStep = () => { scrollToTop(); setStep(prev => prev + 1); };
   const prevStep = () => { scrollToTop(); setStep(prev => prev - 1); };
 
