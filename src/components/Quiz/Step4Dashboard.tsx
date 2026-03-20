@@ -351,8 +351,9 @@ export default function Step4Dashboard({ data }: Props) {
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
           <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); alert('Calendly öffnet sich'); }}
+            href="https://calendly.com/raiku-swiss/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-leder-schwarz bg-alpine-gold rounded-full hover:bg-alpine-gold/90 transition-all hover:scale-105 shadow-xl w-full sm:w-auto"
           >
             <Calendar className="mr-2 w-5 h-5" />
