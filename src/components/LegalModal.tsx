@@ -36,7 +36,7 @@ export default function LegalModal({ type, onClose }: Props) {
             <>
               <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">Angaben gemäss Informationspflicht</h2>
               <p className="leading-relaxed">
-                <strong>alpine.boost</strong><br />
+                <strong>Raiku</strong><br />
                 Musterstrasse 123<br />
                 8000 Zürich<br />
                 Schweiz
@@ -45,14 +45,14 @@ export default function LegalModal({ type, onClose }: Props) {
               <h3 className="text-xl font-bold text-leder-schwarz mt-8 mb-4">Kontakt</h3>
               <p className="leading-relaxed">
                 Telefon: +41 79 123 45 67<br />
-                E-Mail: hello@alpineboost.ch
+                E-Mail: hello@raiku.com
               </p>
               
               <h3 className="text-xl font-bold text-leder-schwarz mt-8 mb-4">Vertretungsberechtigte Personen</h3>
               <p className="leading-relaxed">Max Mustermann, Geschäftsführer</p>
               
               <h3 className="text-xl font-bold text-leder-schwarz mt-8 mb-4">Handelsregistereintrag</h3>
-              <p className="leading-relaxed">Eingetragener Firmenname: alpine.boost GmbH<br />
+              <p className="leading-relaxed">Eingetragener Firmenname: Raiku GmbH<br />
               Nummer: CHE-123.456.789<br />
               Handelsregisteramt: Zürich</p>
               

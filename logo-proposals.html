@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raiku – Logo Proposals</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f7f6f4;
+      color: #1a1714;
+      padding: 48px 24px;
+    }
+
+    h1 {
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 64px;
+    }
+
+    .proposal {
+      margin-bottom: 80px;
+    }
+
+    .proposal-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e5e3e0;
+    }
+
+    .proposal-number {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #bbb;
+    }
+
+    .proposal-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1714;
+    }
+
+    .proposal-desc {
+      font-size: 13px;
+      color: #999;
+    }
+
+    .variants {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .variant {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 48px;
+      min-height: 220px;
+    }
+
+    .variant-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .variant-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Variant backgrounds ── */
+    .light { background: #f5f2ed; }
+    .dark  { background: #111010; }
+
+    /* ────────────────────────────────────────────────
+       PROPOSAL 1 — Geometric R mark + clean wordmark
+    ──────────────────────────────────────────────── */
+    .p1-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .p1-wordmark {
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .p1-wordmark.on-light { color: #1a1714; }
+    .p1-wordmark.on-dark  { color: #f5f2ed; }
+
+    /* ────────────────────────────────────────────────
+       PROPOSAL 2 — Stacked kanji-inspired mark
+    ──────────────────────────────────────────────── */
+    .p2-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .p2-wordmark {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+    }
+    .p2-wordmark.on-light { color: #1a1714; }
+    .p2-wordmark.on-dark  { color: #f5f2ed; }
+    .p2-sub {
+      font-size: 8px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
+    .p2-sub.on-light { color: #999; }
+    .p2-sub.on-dark  { color: #666; }
+
+    /* ────────────────────────────────────────────────
+       PROPOSAL 3 — Gold accent minimal
+    ──────────────────────────────────────────────── */
+    .p3-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .p3-wordmark {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .p3-wordmark.on-light { color: #1a1714; }
+    .p3-wordmark.on-dark  { color: #f5f2ed; }
+
+    /* ────────────────────────────────────────────────
+       PROPOSAL 4 — Navy horizontal bar mark
+    ──────────────────────────────────────────────── */
+    .p4-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .p4-wordmark {
+      font-size: 32px;
+      font-weight: 200;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .p4-wordmark.on-light { color: #1a2744; }
+    .p4-wordmark.on-dark  { color: #c8d6f0; }
+
+    /* ────────────────────────────────────────────────
+       PROPOSAL 5 — Serif / editorial mark
+    ──────────────────────────────────────────────── */
+    .p5-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .p5-wordmark {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      font-style: italic;
+    }
+    .p5-wordmark.on-light { color: #1a1714; }
+    .p5-wordmark.on-dark  { color: #f5f2ed; }
+    .p5-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-bottom: 6px;
+    }
+    .p5-dot.on-light { background: #c8a96e; }
+    .p5-dot.on-dark  { background: #c8a96e; }
+  </style>
+</head>
+<body>
+
+  <h1>Brand Identity</h1>
+  <h2>Raiku — Logo Proposals</h2>
+  <p class="subtitle">5 design directions · Japanese-inspired · Premium & Minimal</p>
+
+  <!-- ══════════════════════════════════════════════
+       PROPOSAL 1 — Geometric R + spaced wordmark
+  ══════════════════════════════════════════════ -->
+  <div class="proposal">
+    <div class="proposal-header">
+      <span class="proposal-number">01</span>
+      <span class="proposal-name">Geometric Mark</span>
+      <span class="proposal-desc">Angular R symbol with widely spaced uppercase wordmark — structural, architectural</span>
+    </div>
+    <div class="variants">
+
+      <div class="variant light">
+        <div class="variant-wrap">
+          <div class="p1-logo">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Angular R made of two strokes -->
+              <line x1="10" y1="8" x2="10" y2="28" stroke="#1a1714" stroke-width="2.5" stroke-linecap="square"/>
+              <path d="M10 8 L24 8 Q30 8 30 15 Q30 22 24 22 L10 22" stroke="#1a1714" stroke-width="2.5" stroke-linecap="square" fill="none"/>
+              <line x1="22" y1="22" x2="30" y2="28" stroke="#1a1714" stroke-width="2.5" stroke-linecap="square"/>
+            </svg>
+            <span class="p1-wordmark on-light">Raiku</span>
+          </div>
+          <div class="variant-label" style="color:#bbb">Light</div>
+        </div>
+      </div>
+
+      <div class="variant dark">
+        <div class="variant-wrap">
+          <div class="p1-logo">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="10" y1="8" x2="10" y2="28" stroke="#f5f2ed" stroke-width="2.5" stroke-linecap="square"/>
+              <path d="M10 8 L24 8 Q30 8 30 15 Q30 22 24 22 L10 22" stroke="#f5f2ed" stroke-width="2.5" stroke-linecap="square" fill="none"/>
+              <line x1="22" y1="22" x2="30" y2="28" stroke="#f5f2ed" stroke-width="2.5" stroke-linecap="square"/>
+            </svg>
+            <span class="p1-wordmark on-dark">Raiku</span>
+          </div>
+          <div class="variant-label" style="color:#444">Dark</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PROPOSAL 2 — Kanji-inspired vertical mark
+  ══════════════════════════════════════════════ -->
+  <div class="proposal">
+    <div class="proposal-header">
+      <span class="proposal-number">02</span>
+      <span class="proposal-name">Kanji Column</span>
+      <span class="proposal-desc">Vertical stacked mark above the wordmark — references Japanese typography rhythm</span>
+    </div>
+    <div class="variants">
+
+      <div class="variant light">
+        <div class="variant-wrap">
+          <div class="p2-logo">
+            <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Three horizontal strokes of varying width, like simplified kanji -->
+              <line x1="4"  y1="6"  x2="24" y2="6"  stroke="#1a1714" stroke-width="2" stroke-linecap="square"/>
+              <line x1="0"  y1="20" x2="28" y2="20" stroke="#1a1714" stroke-width="2" stroke-linecap="square"/>
+              <line x1="6"  y1="34" x2="22" y2="34" stroke="#1a1714" stroke-width="2" stroke-linecap="square"/>
+              <line x1="14" y1="6"  x2="14" y2="34" stroke="#1a1714" stroke-width="1" stroke-linecap="square"/>
+            </svg>
+            <div class="p2-wordmark on-light">Raiku</div>
+            <div class="p2-sub on-light">KI-Beratung</div>
+          </div>
+          <div class="variant-label" style="color:#bbb">Light</div>
+        </div>
+      </div>
+
+      <div class="variant dark">
+        <div class="variant-wrap">
+          <div class="p2-logo">
+            <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="4"  y1="6"  x2="24" y2="6"  stroke="#f5f2ed" stroke-width="2" stroke-linecap="square"/>
+              <line x1="0"  y1="20" x2="28" y2="20" stroke="#f5f2ed" stroke-width="2" stroke-linecap="square"/>
+              <line x1="6"  y1="34" x2="22" y2="34" stroke="#f5f2ed" stroke-width="2" stroke-linecap="square"/>
+              <line x1="14" y1="6"  x2="14" y2="34" stroke="#f5f2ed" stroke-width="1" stroke-linecap="square"/>
+            </svg>
+            <div class="p2-wordmark on-dark">Raiku</div>
+            <div class="p2-sub on-dark">KI-Beratung</div>
+          </div>
+          <div class="variant-label" style="color:#444">Dark</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PROPOSAL 3 — Gold accent, bold wordmark
+  ══════════════════════════════════════════════ -->
+  <div class="proposal">
+    <div class="proposal-header">
+      <span class="proposal-number">03</span>
+      <span class="proposal-name">Gold Accent</span>
+      <span class="proposal-desc">Bold wordmark with a warm gold circle — modern premium, minimal colour usage</span>
+    </div>
+    <div class="variants">
+
+      <div class="variant light">
+        <div class="variant-wrap">
+          <div class="p3-logo">
+            <svg width="10" height="10" viewBox="0 0 10 10">
+              <circle cx="5" cy="5" r="5" fill="#c8a96e"/>
+            </svg>
+            <span class="p3-wordmark on-light">Raiku</span>
+          </div>
+          <div class="variant-label" style="color:#bbb">Light</div>
+        </div>
+      </div>
+
+      <div class="variant dark">
+        <div class="variant-wrap">
+          <div class="p3-logo">
+            <svg width="10" height="10" viewBox="0 0 10 10">
+              <circle cx="5" cy="5" r="5" fill="#c8a96e"/>
+            </svg>
+            <span class="p3-wordmark on-dark">Raiku</span>
+          </div>
+          <div class="variant-label" style="color:#444">Dark</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PROPOSAL 4 — Deep navy, ultra-light weight
+  ══════════════════════════════════════════════ -->
+  <div class="proposal">
+    <div class="proposal-header">
+      <span class="proposal-number">04</span>
+      <span class="proposal-name">Navy Thin</span>
+      <span class="proposal-desc">Ultra-light weight wordmark with a thin horizontal rule — understated, editorial</span>
+    </div>
+    <div class="variants">
+
+      <div class="variant light" style="background:#eef1f7">
+        <div class="variant-wrap">
+          <div class="p4-logo">
+            <svg width="180" height="2" viewBox="0 0 180 2">
+              <rect width="180" height="2" fill="#1a2744"/>
+            </svg>
+            <span class="p4-wordmark on-light">Raiku</span>
+            <svg width="60" height="1" viewBox="0 0 60 1" style="margin-top:2px">
+              <rect width="60" height="1" fill="#c8a96e"/>
+            </svg>
+          </div>
+          <div class="variant-label" style="color:#aab">Light</div>
+        </div>
+      </div>
+
+      <div class="variant dark" style="background:#0d1525">
+        <div class="variant-wrap">
+          <div class="p4-logo">
+            <svg width="180" height="2" viewBox="0 0 180 2">
+              <rect width="180" height="2" fill="#c8d6f0"/>
+            </svg>
+            <span class="p4-wordmark on-dark">Raiku</span>
+            <svg width="60" height="1" viewBox="0 0 60 1" style="margin-top:2px">
+              <rect width="60" height="1" fill="#c8a96e"/>
+            </svg>
+          </div>
+          <div class="variant-label" style="color:#3a4a6a">Dark</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PROPOSAL 5 — Italic serif + gold dot
+  ══════════════════════════════════════════════ -->
+  <div class="proposal">
+    <div class="proposal-header">
+      <span class="proposal-number">05</span>
+      <span class="proposal-name">Italic Editorial</span>
+      <span class="proposal-desc">Italic bold wordmark with gold accent dot — confident, magazine-grade, high-contrast</span>
+    </div>
+    <div class="variants">
+
+      <div class="variant light">
+        <div class="variant-wrap">
+          <div class="p5-logo">
+            <span class="p5-wordmark on-light">Raiku</span>
+            <div class="p5-dot on-light"></div>
+          </div>
+          <div class="variant-label" style="color:#bbb">Light</div>
+        </div>
+      </div>
+
+      <div class="variant dark">
+        <div class="variant-wrap">
+          <div class="p5-logo">
+            <span class="p5-wordmark on-dark">Raiku</span>
+            <div class="p5-dot on-dark"></div>
+          </div>
+          <div class="variant-label" style="color:#444">Dark</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

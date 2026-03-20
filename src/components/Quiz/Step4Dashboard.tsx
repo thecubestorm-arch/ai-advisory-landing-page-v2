@@ -143,7 +143,7 @@ export default function Step4Dashboard({ data }: Props) {
         <div className="mt-12 pt-8 border-t border-cremeweiss/10 flex flex-col sm:flex-row justify-center items-center gap-8 text-cremeweiss/50 font-medium">
           <div className="flex items-center">
             <Mail className="w-5 h-5 mr-2" />
-            hello@alpineboost.ch
+            hello@raiku.com
           </div>
           <div className="flex items-center">
             <Phone className="w-5 h-5 mr-2" />

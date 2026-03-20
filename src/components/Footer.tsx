@@ -12,9 +12,9 @@ export default function Footer({ onOpenLegal }: Props) {
         <div className="flex gap-6 text-sm font-medium">
           <button onClick={() => onOpenLegal('impressum')} className="text-cremeweiss/50 hover:text-alpine-gold transition-colors">Impressum</button>
           <button onClick={() => onOpenLegal('datenschutz')} className="text-cremeweiss/50 hover:text-alpine-gold transition-colors">Datenschutz</button>
-          <a href="mailto:hello@alpineboost.ch" className="text-cremeweiss/50 hover:text-alpine-gold transition-colors">hello@alpineboost.ch</a>
+          <a href="mailto:hello@raiku.com" className="text-cremeweiss/50 hover:text-alpine-gold transition-colors">hello@raiku.com</a>
         </div>
-        <span className="text-xs text-cremeweiss/30">&copy; {new Date().getFullYear()} alpine.boost</span>
+        <span className="text-xs text-cremeweiss/30">&copy; {new Date().getFullYear()} Raiku</span>
       </div>
     </footer>
   );
