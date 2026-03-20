@@ -56,7 +56,29 @@ export default function Quiz({ isOpen, onClose }: QuizProps) {
   };
 
   const handleComplete = () => {
-    console.log('Quiz completed with data:', data);
+    fetch('https://n8n.srv1019856.hstgr.cloud/webhook-test/c00631d6-504a-45db-9962-65738d78887e', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        kontakt: {
+          name: data.name,
+          email: data.email,
+          telefon: data.phone,
+        },
+        best_practices: {
+          bp1: data.bp1, bp2: data.bp2, bp3: data.bp3, bp4: data.bp4, bp5: data.bp5,
+          bp6: data.bp6, bp7: data.bp7, bp8: data.bp8, bp9: data.bp9, bp10: data.bp10,
+        },
+        situation: {
+          s1: data.s1, s1_other: data.s1_other,
+          s2: data.s2, s2_other: data.s2_other,
+          s3: data.s3, s3_other: data.s3_other,
+          s4: data.s4, s4_other: data.s4_other,
+          s5: data.s5,
+        },
+        timestamp: new Date().toISOString(),
+      }),
+    }).catch(() => {});
     nextStep();
   };
 
