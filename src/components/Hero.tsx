@@ -36,7 +36,7 @@ export default function Hero({ onOpenQuiz }: Props) {
 
         <button
           onClick={onOpenQuiz}
-          className="inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-cremeweiss bg-alpine-gold rounded-xl hover:bg-alpine-gold/90 transition-all hover:scale-105 shadow-xl"
+          className="btn-glow inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-cremeweiss bg-alpine-gold rounded-xl hover:bg-alpine-gold/90 transition-all hover:scale-105 shadow-xl"
         >
           Mein KI-Potenzial entdecken
           <ArrowRight className="ml-3 w-6 h-6" />
