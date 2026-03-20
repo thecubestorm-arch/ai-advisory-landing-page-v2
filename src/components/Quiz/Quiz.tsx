@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import Step1Contact from './Step1Contact';
 import Step2BestPractices from './Step2BestPractices';
@@ -97,6 +97,7 @@ function buildResults(data: QuizData) {
 export default function Quiz({ isOpen, onClose }: QuizProps) {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<QuizData>(initialData);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -110,14 +111,9 @@ export default function Quiz({ isOpen, onClose }: QuizProps) {
   if (!isOpen) return null;
 
   const updateData = (fields: Partial<QuizData>) => setData(prev => ({ ...prev, ...fields }));
-  const nextStep = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setStep(prev => prev + 1);
-  };
-  const prevStep = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setStep(prev => prev - 1);
-  };
+  const scrollToTop = () => scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  const nextStep = () => { scrollToTop(); setStep(prev => prev + 1); };
+  const prevStep = () => { scrollToTop(); setStep(prev => prev - 1); };
 
   const handleComplete = () => {
     const results = buildResults(data);
@@ -168,7 +164,7 @@ export default function Quiz({ isOpen, onClose }: QuizProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-cremeweiss overflow-y-auto">
+    <div ref={scrollRef} className="fixed inset-0 z-50 bg-cremeweiss overflow-y-auto">
       <button
         onClick={onClose}
         className="fixed top-4 right-4 md:top-8 md:right-8 p-3 text-leder-schwarz/50 hover:text-leder-schwarz bg-leder-schwarz/5 hover:bg-leder-schwarz/10 rounded-full transition-colors z-[60]"

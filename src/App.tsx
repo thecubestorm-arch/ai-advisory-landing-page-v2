@@ -9,6 +9,7 @@ import Quiz from './components/Quiz/Quiz';
 import Footer from './components/Footer';
 import Logo from './components/Logo';
 import LegalModal from './components/LegalModal';
+import CookieBanner from './components/CookieBanner';
 
 export default function App() {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
@@ -29,6 +30,7 @@ export default function App() {
       <Footer onOpenLegal={(type) => setLegalModal(type)} />
       <Quiz isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
       <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />
+      <CookieBanner onOpenDatenschutz={() => setLegalModal('datenschutz')} />
     </div>
   );
 }

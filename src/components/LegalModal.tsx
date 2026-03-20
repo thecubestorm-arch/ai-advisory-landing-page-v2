@@ -36,51 +36,69 @@ export default function LegalModal({ type, onClose }: Props) {
             <>
               <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">Angaben gemäss Informationspflicht</h2>
               <p className="leading-relaxed">
-                <strong>Raiku</strong><br />
-                Musterstrasse 123<br />
-                8000 Zürich<br />
+                <strong>Buetikofer Digital</strong><br />
+                Rosengasse 31<br />
+                4600 Olten<br />
                 Schweiz
               </p>
-              
+
               <h3 className="text-xl font-bold text-leder-schwarz mt-8 mb-4">Kontakt</h3>
               <p className="leading-relaxed">
-                Telefon: +41 79 123 45 67<br />
-                E-Mail: hello@raiku.com
+                E-Mail: <a href="mailto:hi@raiku.ch" className="underline hover:text-leder-schwarz transition-colors">hi@raiku.ch</a>
               </p>
-              
-              <h3 className="text-xl font-bold text-leder-schwarz mt-8 mb-4">Vertretungsberechtigte Personen</h3>
-              <p className="leading-relaxed">Max Mustermann, Geschäftsführer</p>
-              
-              <h3 className="text-xl font-bold text-leder-schwarz mt-8 mb-4">Handelsregistereintrag</h3>
-              <p className="leading-relaxed">Eingetragener Firmenname: Raiku GmbH<br />
-              Nummer: CHE-123.456.789<br />
-              Handelsregisteramt: Zürich</p>
-              
+
               <h3 className="text-xl font-bold text-leder-schwarz mt-8 mb-4">Haftungsausschluss</h3>
-              <p className="leading-relaxed">Der Autor übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen. Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, welche aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der Verbindung oder durch technische Störungen entstanden sind, werden ausgeschlossen.</p>
+              <p className="leading-relaxed">Der Betreiber dieser Website übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der bereitgestellten Informationen. Haftungsansprüche wegen Schäden materieller oder immaterieller Art, die aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen entstanden sind, werden ausgeschlossen.</p>
+
+              <h3 className="text-xl font-bold text-leder-schwarz mt-8 mb-4">Urheberrecht</h3>
+              <p className="leading-relaxed">Die auf dieser Website veröffentlichten Inhalte und Werke unterliegen dem Urheberrecht. Jede Vervielfältigung, Bearbeitung, Verbreitung und Verwertung ausserhalb der Grenzen des Urheberrechts bedarf der schriftlichen Zustimmung des jeweiligen Autors.</p>
             </>
           ) : (
             <>
-              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">1. Datenschutz auf einen Blick</h2>
+              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">1. Verantwortliche Stelle</h2>
+              <p className="leading-relaxed">
+                Verantwortlich für die Datenbearbeitung auf dieser Website gemäss Schweizer Datenschutzgesetz (DSG):<br /><br />
+                <strong>Buetikofer Digital</strong><br />
+                Rosengasse 31<br />
+                4600 Olten<br />
+                Schweiz<br />
+                E-Mail: <a href="mailto:hi@raiku.ch" className="underline hover:text-leder-schwarz transition-colors">hi@raiku.ch</a>
+              </p>
+
+              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">2. Datenerfassung auf dieser Website</h2>
+
               <h3 className="text-xl font-bold text-leder-schwarz mt-6 mb-3">Allgemeine Hinweise</h3>
-              <p className="leading-relaxed">Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
-              
-              <h3 className="text-xl font-bold text-leder-schwarz mt-6 mb-3">Datenerfassung auf dieser Website</h3>
-              <h4 className="text-lg font-bold text-leder-schwarz mt-4 mb-2">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h4>
-              <p className="leading-relaxed">Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
-              
-              <h4 className="text-lg font-bold text-leder-schwarz mt-4 mb-2">Wie erfassen wir Ihre Daten?</h4>
-              <p className="leading-relaxed">Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
-              
-              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">2. Hosting</h2>
-              <p className="leading-relaxed">Wir hosten die Inhalte unserer Website bei folgendem Anbieter: Externer Hoster. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert.</p>
-              
-              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">3. Allgemeine Hinweise und Pflichtinformationen</h2>
-              <h3 className="text-xl font-bold text-leder-schwarz mt-6 mb-3">Datenschutz</h3>
-              <p className="leading-relaxed">Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-              
-              <h3 className="text-xl font-bold text-leder-schwarz mt-6 mb-3">Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-              <p className="leading-relaxed">Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmässigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+              <p className="leading-relaxed">Wir nehmen den Schutz Ihrer persönlichen Daten ernst und behandeln Ihre personenbezogenen Daten vertraulich sowie entsprechend den gesetzlichen Datenschutzvorschriften (Schweizer DSG) und dieser Datenschutzerklärung.</p>
+
+              <h3 className="text-xl font-bold text-leder-schwarz mt-6 mb-3">Server-Logfiles</h3>
+              <p className="leading-relaxed">Der Hosting-Anbieter dieser Website erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage sowie IP-Adresse. Diese Daten sind nicht anderen Datenquellen zuordnebar und werden nach spätestens 30 Tagen gelöscht. Rechtsgrundlage ist das berechtigte Interesse am sicheren Betrieb der Website (Art. 31 DSG).</p>
+
+              <h3 className="text-xl font-bold text-leder-schwarz mt-6 mb-3">Quiz / Kontaktanfragen</h3>
+              <p className="leading-relaxed">Wenn Sie unser Quiz ausfüllen oder eine Anfrage stellen, werden die von Ihnen eingegebenen Daten (z. B. Angaben zu Ihrem Unternehmen und Ihren Bedürfnissen) bei uns gespeichert, um Ihre Anfrage zu bearbeiten und Sie zu kontaktieren. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 DSG).</p>
+
+              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">3. Cookies</h2>
+              <p className="leading-relaxed">Diese Website verwendet Cookies. Dabei handelt es sich um kleine Textdateien, die Ihr Webbrowser auf Ihrem Endgerät speichert. Cookies helfen dabei, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen.</p>
+              <p className="leading-relaxed mt-3"><strong>Notwendige Cookies</strong> sind für den Betrieb der Website technisch erforderlich und werden ohne Ihre Einwilligung gesetzt (z. B. Speicherung Ihrer Cookie-Präferenzen).</p>
+              <p className="leading-relaxed mt-3"><strong>Optionale Cookies</strong> (z. B. für Analyse oder Marketing) werden nur mit Ihrer ausdrücklichen Einwilligung gesetzt. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie die Cookie-Einstellungen im Banner neu setzen oder Cookies in Ihrem Browser löschen.</p>
+
+              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">4. Hosting</h2>
+              <p className="leading-relaxed">Diese Website wird bei Vercel Inc. (440 N Barranca Ave #4133, Covina, CA 91723, USA) gehostet. Vercel kann beim Aufruf der Website automatisch Verbindungsdaten erfassen. Weitere Informationen finden Sie in der Datenschutzerklärung von Vercel: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-leder-schwarz transition-colors">vercel.com/legal/privacy-policy</a>. Die Übermittlung in die USA erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission.</p>
+
+              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">5. Ihre Rechte</h2>
+              <p className="leading-relaxed">Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
+              <ul className="list-disc list-inside space-y-1 mt-3 leading-relaxed">
+                <li>Recht auf Auskunft (Art. 25 DSG)</li>
+                <li>Recht auf Berichtigung unrichtiger Daten</li>
+                <li>Recht auf Löschung Ihrer Daten</li>
+                <li>Recht auf Einschränkung der Bearbeitung</li>
+                <li>Recht auf Datenherausgabe (Datenportabilität)</li>
+                <li>Recht auf Widerruf einer erteilten Einwilligung</li>
+              </ul>
+              <p className="leading-relaxed mt-3">Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:hi@raiku.ch" className="underline hover:text-leder-schwarz transition-colors">hi@raiku.ch</a></p>
+              <p className="leading-relaxed mt-3">Sie haben ausserdem das Recht, sich beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) zu beschweren: <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener noreferrer" className="underline hover:text-leder-schwarz transition-colors">www.edoeb.admin.ch</a></p>
+
+              <h2 className="text-2xl font-bold text-leder-schwarz mt-8 mb-4">6. Aktualität</h2>
+              <p className="leading-relaxed">Diese Datenschutzerklärung ist aktuell gültig und datiert vom März 2025. Wir behalten uns das Recht vor, diese Datenschutzerklärung bei Bedarf anzupassen.</p>
             </>
           )}
         </div>

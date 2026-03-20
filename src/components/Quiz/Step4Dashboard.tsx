@@ -1,6 +1,6 @@
 import { jsPDF } from 'jspdf';
 import { QuizData } from './Quiz';
-import { Calendar, Lightbulb, Target, Zap, AlertTriangle, CheckCircle2, Mail, Phone, Download } from 'lucide-react';
+import { Calendar, Lightbulb, Target, Zap, AlertTriangle, CheckCircle2, Mail, Download, TrendingUp } from 'lucide-react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 interface Props {
@@ -196,7 +196,7 @@ export default function Step4Dashboard({ data }: Props) {
     y += ctaLines.length * 6 + 8;
 
     doc.setTextColor(...gold);
-    doc.text('hello@raiku.com  |  +41 79 123 45 67  |  www.raiku.com', margin, y);
+    doc.text('hi@raiku.ch', margin, y);
 
     // Bottom bar
     doc.setFillColor(...dark);
@@ -204,7 +204,7 @@ export default function Step4Dashboard({ data }: Props) {
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...gold);
-    doc.text('© RAIKU – AI Advisory', pageW / 2, 293, { align: 'center' });
+    doc.text('© Buetikofer Digital', pageW / 2, 293, { align: 'center' });
 
     doc.save(`RAIKU_AI-Readiness-Report_${data.name.replace(/\s+/g, '_')}.pdf`);
   };
@@ -257,6 +257,76 @@ export default function Step4Dashboard({ data }: Props) {
         ))}
       </div>
 
+      {/* Urgency / Competitor Benchmark */}
+      {(() => {
+        const marketAvg = 52;
+        const urgency = totalScore > 70
+          ? {
+              headline: 'Sie sind vorne — aber der Vorsprung ist gefährdet.',
+              text: 'Topunternehmen im DACH-Raum investieren 2025 massiv in AI-Skalierung und Mitarbeiterschulung. Wer jetzt nicht aktiv ausbaut, verliert seinen Vorsprung innert 12 Monaten — denn die Konkurrenz holt schnell auf.',
+            }
+          : totalScore > 40
+          ? {
+              headline: 'Die Schere öffnet sich — jetzt ist der Moment zu handeln.',
+              text: 'Während Sie diesen Report lesen, implementieren Mitbewerber neue AI-Workflows und schulen ihre Teams. Die Lücke wird grösser, nicht kleiner — wer jetzt nicht handelt, kämpft morgen mit doppeltem Rückstand.',
+            }
+          : {
+              headline: 'Kritischer Rückstand — jede Woche zählt.',
+              text: '3 von 4 Unternehmen in Ihrer Branche haben AI bereits aktiv im Einsatz. Jede Woche ohne klare Strategie bedeutet wachsenden Wettbewerbsnachteil, der mit der Zeit immer schwerer aufzuholen ist.',
+            };
+
+        return (
+          <div className="mb-16 bg-leder-schwarz rounded-3xl p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-alpine-gold" />
+
+            {/* Stat row */}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-10">
+              <div className="flex-shrink-0 text-center">
+                <div className="text-6xl md:text-7xl font-extrabold text-alpine-gold leading-none">77%</div>
+                <div className="text-cremeweiss/50 text-sm mt-2 max-w-[140px] leading-snug">der DACH-Unternehmen haben AI-Investitionen 2024 erhöht</div>
+              </div>
+              <div className="w-px h-16 bg-cremeweiss/10 hidden md:block" />
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <TrendingUp className="w-4 h-4 text-alpine-gold" />
+                  <span className="text-cremeweiss/60 text-sm font-semibold uppercase tracking-widest">Marktvergleich</span>
+                </div>
+                <div className="space-y-3 mt-4">
+                  {/* Market average bar */}
+                  <div>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span className="text-cremeweiss/50">Marktdurchschnitt</span>
+                      <span className="text-cremeweiss/50 font-bold">{marketAvg}</span>
+                    </div>
+                    <div className="w-full bg-cremeweiss/10 rounded-full h-2">
+                      <div className="bg-cremeweiss/30 h-2 rounded-full" style={{ width: `${marketAvg}%` }} />
+                    </div>
+                  </div>
+                  {/* User score bar */}
+                  <div>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span className="text-cremeweiss font-semibold">Ihr Score</span>
+                      <span className="text-alpine-gold font-bold">{totalScore}</span>
+                    </div>
+                    <div className="w-full bg-cremeweiss/10 rounded-full h-2">
+                      <div className="bg-alpine-gold h-2 rounded-full transition-all duration-1000" style={{ width: `${totalScore}%` }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Dynamic urgency message */}
+            <div className="border-t border-cremeweiss/10 pt-8">
+              <h4 className="text-xl md:text-2xl font-bold text-cremeweiss mb-3">{urgency.headline}</h4>
+              <p className="text-cremeweiss/70 leading-relaxed max-w-3xl">{urgency.text}</p>
+            </div>
+
+            <p className="text-cremeweiss/20 text-xs mt-6">Quellen: McKinsey Global AI Survey 2024, WEF Future of Jobs Report 2025</p>
+          </div>
+        );
+      })()}
+
       {/* Email Confirmation & Download */}
       <div className="text-center mb-16">
         <p className="text-leder-schwarz/70 text-lg mb-6">
@@ -290,14 +360,10 @@ export default function Step4Dashboard({ data }: Props) {
           </a>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-cremeweiss/10 flex flex-col sm:flex-row justify-center items-center gap-8 text-cremeweiss/50 font-medium">
+        <div className="mt-12 pt-8 border-t border-cremeweiss/10 flex justify-center items-center text-cremeweiss/50 font-medium">
           <div className="flex items-center">
             <Mail className="w-5 h-5 mr-2" />
-            hello@raiku.com
-          </div>
-          <div className="flex items-center">
-            <Phone className="w-5 h-5 mr-2" />
-            +41 79 123 45 67
+            hi@raiku.ch
           </div>
         </div>
       </div>
