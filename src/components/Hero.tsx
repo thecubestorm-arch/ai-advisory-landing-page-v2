@@ -9,7 +9,7 @@ export default function Hero({ onOpenQuiz }: Props) {
     <section className="relative overflow-hidden bg-cremeweiss pt-32 pb-20 text-leder-schwarz flex-grow flex flex-col justify-center">
       <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-leder-schwarz">
-          Finde heraus, wie gut dein Unternehmen bereits KI nutzt
+          Die meisten Unternehmen verpassen den KI-Anschluss. Gehörst du dazu?
         </h1>
         <p className="text-xl md:text-2xl text-leder-schwarz/70 mb-10 max-w-3xl mx-auto font-medium">
           Mache das kurze KI-Assessment und entdecke deinen aktuellen Reifegrad, zentrale Lücken und wo Automatisierung oder KI den grössten Business-Impact erzielen können.
