@@ -35,7 +35,8 @@ export default function Step1Contact({ data, updateData, onNext }: Props) {
         <div>
           <label className="block text-sm font-bold text-leder-schwarz mb-2">Vollständiger Name *</label>
           <input 
-            type="text" 
+            type="text"
+            autoComplete="name"
             value={data.name}
             onChange={e => updateData({ name: e.target.value })}
             className={`w-full bg-cremeweiss border ${errors.name ? 'border-red-500' : 'border-leder-schwarz/10'} rounded-xl px-4 py-4 text-leder-schwarz focus:outline-none focus:ring-2 focus:ring-alpine-gold transition-all`}
@@ -46,7 +47,8 @@ export default function Step1Contact({ data, updateData, onNext }: Props) {
         <div>
           <label className="block text-sm font-bold text-leder-schwarz mb-2">E-Mail Adresse *</label>
           <input 
-            type="email" 
+            type="email"
+            autoComplete="email"
             value={data.email}
             onChange={e => updateData({ email: e.target.value })}
             className={`w-full bg-cremeweiss border ${errors.email ? 'border-red-500' : 'border-leder-schwarz/10'} rounded-xl px-4 py-4 text-leder-schwarz focus:outline-none focus:ring-2 focus:ring-alpine-gold transition-all`}
@@ -57,7 +59,8 @@ export default function Step1Contact({ data, updateData, onNext }: Props) {
         <div>
           <label className="block text-sm font-bold text-leder-schwarz mb-2">Telefonnummer (Optional)</label>
           <input 
-            type="tel" 
+            type="tel"
+            autoComplete="tel"
             value={data.phone}
             onChange={e => updateData({ phone: e.target.value })}
             className="w-full bg-cremeweiss border border-leder-schwarz/10 rounded-xl px-4 py-4 text-leder-schwarz focus:outline-none focus:ring-2 focus:ring-alpine-gold transition-all"
