@@ -63,7 +63,9 @@ export default function Step4Dashboard({ data }: Props) {
     } else if (data.s3 === 'Fehlendes Know-how') {
       insights.push({ icon: <Target className="text-alpine-gold" />, title: "Wissenslücke schliessen", text: "Nutze externe Expertise, um teure Anfängerfehler zu vermeiden und direkt Best Practices zu implementieren." });
     } else {
-      insights.push({ icon: <Target className="text-alpine-gold" />, title: "Fokus auf Umsetzung", text: `Dein Ziel "${data.s2}" ist greifbar. Wir müssen nur die Hürde "${data.s3}" systematisch abbauen.` });
+      const ziel = data.s2 === 'Sonstiges' ? data.s2_other : data.s2;
+      const huerden = data.s3 === 'Sonstiges' ? data.s3_other : data.s3;
+      insights.push({ icon: <Target className="text-alpine-gold" />, title: "Fokus auf Umsetzung", text: `Dein Ziel "${ziel}" ist greifbar. Wir müssen nur die Hürde "${huerden}" systematisch abbauen.` });
     }
 
     return insights;
