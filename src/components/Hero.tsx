@@ -31,7 +31,7 @@ export default function Hero({ onOpenQuiz }: Props) {
         </div>
 
         <p className="text-sm text-leder-schwarz/50 mb-8">
-          Bereits 10+ KMUs aus Operations, HR und Admin haben ihr KI-Potenzial entdeckt.
+          Bereits 100+ KMUs aus Operations, HR und Admin haben ihr KI-Potenzial entdeckt.
         </p>
 
         <button
