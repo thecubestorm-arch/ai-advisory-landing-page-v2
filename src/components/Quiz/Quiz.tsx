@@ -122,7 +122,7 @@ export default function Quiz({ isOpen, onClose }: QuizProps) {
   const handleComplete = () => {
     const results = buildResults(data);
 
-    fetch('https://n8n.srv1019856.hstgr.cloud/webhook-test/c00631d6-504a-45db-9962-65738d78887e', {
+    fetch('https://n8n.srv1019856.hstgr.cloud/webhook/c00631d6-504a-45db-9962-65738d78887e', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
